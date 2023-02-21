@@ -1,0 +1,102 @@
+﻿cod;desc;desc_short
+1001;Productos agricolas;Prod. agricolas
+1002;Animales vivos y productos pecuarios;Ani. Vivos y Prod. Pecua.
+1003;Productos de la caza- silvicultura y madera;Prod. Caza-silvi-madera
+1004;Servicios agricolas y ganaderos;Serv. Agri-Ganadero
+2001;Productos de la pesca y acuicultura;Prod. Pesca-Acuicultura
+3001;Petroleo crudo- gas natural y servicios conexos;Petro-GasNatural
+3002;Servicios de apoyo a la extraccion de hidrocarburos;Serv. Apoy extracc.
+4001;Productos minerales metalicos;Prod. Mineral-Metal.
+4002;Productos minerales no metalicos y carbon;Prod. Mineral-NoMetal-Carbon
+4003;Servicios de apoyo a la extraccion minera;Serv. Apoyo Extr.Minera
+5001;Carnes- menudencias- cueros y subproductos de la matanza;Carn-Menudencias-Cueros-Subp.Matanza
+6001;Preservacion de pescado;Preserv. Pescado
+7001;Harina y aceite de pescado;HarinaAceite Pescado
+8001;Conservas de frutas y vegetales;Conservas de frutas
+9001;Aceites y grasas de origen vegetal y animal;Aceites y grasas
+10001;Productos lacteos;Lacteos
+11001;Productos de molineria- fideos y otras pastas;molineria-fideos-otrasPastas
+11002;Productos de panaderia y pasteleria;Prod.Panaderia-Pasteleria
+11003;Almidones y productos de almidon;Almidones-Prod.Almidon
+12001;Azucar;Azucar
+13001;Cacao- chocolate y confiteria;Cacao-Choc.-Confiteria
+13002;Otros productos alimenticios;Otrs Prod. Alimenticios
+14001;Alimentos preparados para animales;Alimentos prep. Animales
+15001;Malta y cerveza;Malta-Cerveza
+15002;Vinos- otras bebidas alcoholicas y tabaco;Vino-BebAlcohol-Tabaco
+15003;Bebidas no alcoholicas;Beb.NoAlcoholicas
+16001;Materiales textiles preparados- hilos e hilados;MateriaTextiles Hilos e Hilados
+16002;Tejidos y servicios de acabado textil;TejidosServicios de Textil
+16003;Otros productos textiles;OtrosProduct. Textil
+17001;Prendas de vestir;Prendas de vestir
+18001;Cuero y productos de cuero;Cuero y productos de cuero
+18002;Calzado;Calzado
+19001;Madera;Madera
+19002;Productos de madera;Prod. Madera
+20001;Pulpa- papel y carton;Pulpa- papel y carton
+20002;Productos de papel y carton;Product. de papel y carton
+21001;Productos de imprenta;Product. de imprenta
+21002;Reproduccion de grabaciones;Reproducc. de grabaciones
+22001;Petroleo refinado;Petroleo refinado
+23001;Sustancias quimicas basicas- plasticos y caucho;Sustancias quimicas-plasticos-caucho
+23002;Abonos y compuestos de nitrogeno;Abonos y compuestos de nitrogeno
+24001;Productos de limpieza y de tocador;Productos de limpieza y de tocador
+24002;Pesticidas y otros productos quimicos;Pesticidas y otros productos quimicos
+25001;Productos farmaceuticos y medicamentos;Product. farmaceuticos y medicamentos
+26001;Productos de caucho;Produc. de caucho
+26002;Productos de plastico;Produc. de plastico
+27001;Vidrio y productos de vidrio;Vidrio y prod. de vidrio
+27002;Otros productos minerales no metalicos;Otros product. mineralesNoMetalicos
+28001;Productos de siderurgia;Product. de siderurgia
+29001;Metales preciosos y metales no ferrosos;MetalesPreciosos-metalesNoFerrosos
+30001;Productos metalicos para uso estructural;Productos metalicos para uso estructural
+30002;Otros productos metalicos diversos;Otros productos metalicos diversos
+31001;Productos informaticos- electronicos y opticos;Productos informaticos-Electronicos-opticos
+32001;Maquinaria y equipo electrico;Maquinaria y equipo electrico
+32002;Otra maquinaria y equipo;Otra maquinaria y equipo
+33001;Material de transporte;Material de transporte
+34001;Muebles;Muebles
+35001;Otros productos manufacturados diversos;Otros productos manufacturados diversos
+36001;Servicio de electricidad y gas;Servicio de electricidad y gas
+36002;Servicio de agua y alcantarillado- gestion de desechos y saneamiento;Serv.AguaAlcantarillado-GestionDesechosSaneamiento
+37001;Construccion;Construccion
+38001;Servicio de comercializacion;Servicio de comercializacion
+38002;Mantenimiento y reparacion de vehiculos automotores y motocicletas;Manten. y rep. de vehiculosAutomotores y Motocicletas
+39001;Transporte terrestre;Transporte terrestre
+39002;Transporte acuatico;Transporte acuatico
+39003;Transporte aereo;Transporte aereo
+39004;Almacenamiento;Almacenamiento
+39005;Servicios complementarios de transporte;Servicios complementarios de transporte
+39006;Correo y mensajeria;Correo y mensajeria
+40001;Alojamiento;Alojamiento
+40002;Restaurantes;Restaurantes
+41001;Telecomunicaciones;Telecomunicaciones
+42001;Edicion impresa y en linea;Edicion impresa y en linea
+42002;Produccion- proyeccion y distribucion de peliculas y grabacion de sonido;ProduccionProyeccionDistribucion de peliculas y grab.Sonido
+42003;Radio y television;Radio y television
+42004;Tecnologia informatica y procesamiento de datos;Tec.InformaticaProcesamientoDatos
+42005;Otros servicios de informacion;Otros servicios de informacion
+43001;Servicios financieros;Servicios financieros
+44001;Servicio de seguros;Servicio de seguros
+44002;Servicios de pensiones;Servicios de pensiones
+45001;Servicio inmobiliario;Servicio inmobiliario
+45002;Alquiler de vivienda;Alquiler de vivienda
+46001;Servicios profesionales- cientificos y tecnicos;ServiciosProfesionalesCientificos y tecnicos
+46002;Servicios de publicidad e investigacion de mercados;Servicios de publicidad-Investigacion de mercados
+47001;Alquiler de vehiculos;Alquiler de vehiculos
+47002;Alquiler de maquinaria y equipo y de mercaderias tangibles;Alquiler de maqui. y equipo y de mercaderias tangibles
+47003;Otro alquiler y arrendamiento;Otro alquiler y arrendamiento
+48001;Agencias de viaje y operadores turisticos;Agencias de viaje y operadores turisticos
+49001;Agencias de empleo;Agencias de empleo
+49002;Servicios de proteccion y seguridad;Servicios de proteccion y seguridad
+49003;Limpieza- servicios de apoyo a edificios y mantenimiento de jardines;LimpiezaServiciosApoyoEdificios y mantenimiento de jardines
+49004;Otros servicios administrativos y de apoyo;Otros servicios administrativos y de apoyo
+50001;Servicios de administracion publica- defensa y otros;Servicios de administracion publicaDefensa y otros
+51001;Educacion privada;Educacion privada
+51002;Educacion publica;Educacion publica
+52001;Salud privada;Salud privada
+52002;Salud publica;Salud publica
+53001;Servicios sociales y de asociaciones u organizaciones no mercantes;Serv. Social. y de asociaciones u organizaciones no mercantes
+54001;Servicios de arte- entretenimiento y esparcimiento;Servicios de arteEntretenimientoEsparcimiento
+54002;Reparacion de computadoras y enseres de uso personal;ReparacionComputadoras y enseres de uso personal
+54003;Otros servicios personales;Otros servicios personales

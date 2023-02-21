@@ -1,0 +1,1083 @@
+---
+title: "PRODUCCIÓN AGRÍCOLA EN LAMBAYEQUE"
+author: "Elías Aburto-Camacllanqui"
+date: "21-02-2023"
+output:
+  xaringan::moon_reader:
+    css: [xaringan-themer.css, custom.css]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: 16:11
+encoding: "UTF-8"
+---
+
+class: inverse, center, middle
+# .font150[Encuesta Nacional Agropecuaria 2019]
+
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+```{r xaringan-themer, warning=FALSE, include=FALSE}
+library(xaringanthemer)
+style_mono_accent(
+  base_color       = "#E94B4F",
+  padding          = "16px 50px 12px 50px",
+  code_font_google = google_font("Fira Mono")
+)
+```
+
+```{r xaringanExtra, echo=FALSE}
+#devtools::install_github("gadenbuie/xaringanExtra")
+library(xaringanExtra)
+xaringanExtra::use_xaringan_extra(c("tile_view", "tachyons", "panelset"))
+xaringanExtra::use_tile_view()
+xaringanExtra::use_editable()
+xaringanExtra::use_scribble()
+xaringanExtra::use_logo(
+  image_url ="imagenes/logo.png", 
+  link_url = "https://medicionpsicologica.com",
+  width = 120, 
+  height = 120
+  )
+xaringanExtra::use_clipboard(
+  button_text = "Copiar",
+  success_text = "Copiado",
+  error_text = "Presiona Ctrl+C para copiar"
+)
+xaringanExtra::use_fit_screen()
+xaringanExtra::use_extra_styles(
+  hover_code_line = TRUE,          #<<
+  mute_unhighlighted_code = FALSE  #<<
+)
+```
+
+
+
+---
+# DATOS DE LA UNIDAD AGRÍCOLA
+.font105[A nivel **nacional** (ENA, 2019).]
+
+
+```{r, include=FALSE}
+library(tidyverse)
+library(patchwork)
+
+cap1200 <- haven::read_sav("20_Cap1200.sav")
+
+```
+
+
+
+```{r echo=FALSE, out.width = "70%", message = FALSE, warning = FALSE}
+table(cap1200$NOMBREDD, useNA = "alw")
+```
+
+```{r echo=FALSE, out.width = "70%", message = FALSE, warning = FALSE}
+cap1200 %>% 
+  count(CODIGO) %>%
+  mutate(Porcentaje = round(n/sum(n)*100,1)) %>% 
+  print(n = Inf)
+
+```
+
+
+---
+
+# DATOS DE LA UNIDAD AGRÍCOLA
+.font105[A nivel del **departamento de Lambayeque** (ENA, 2019).]
+
+
+```{r, include=FALSE}
+provincia <- c(`01`="Chiclayo",
+               `02`="Ferreñafe",
+               `03`="Lambayeque")
+
+cap1200_depart <- cap1200 %>%
+  filter(NOMBREDD %in% "LAMBAYEQUE") %>%
+  mutate(PROVINCIA = CCPP) %>%
+  mutate(PROVINCIA = recode_factor(PROVINCIA,!!!provincia))
+
+```
+
+
+```{r echo=FALSE, out.width = "70%", message = FALSE, warning = FALSE}
+table(cap1200_depart$PROVINCIA, useNA = "alw")
+```
+
+
+```{r echo=FALSE, out.width = "70%", message = FALSE, warning = FALSE}
+cap1200_depart %>% 
+  count(CODIGO) %>%
+  mutate(Porcentaje = round(n/sum(n)*100,1)) %>% 
+  print(n = Inf)
+```
+
+
+
+---
+
+# DATOS DE LA UNIDAD AGRÍCOLA
+.font105[A nivel de la **provincia de Lambayeque** (ENA, 2019).]
+
+
+```{r, include=FALSE}
+distrito <- c(`01`="Lambayeque",
+              `02`="Chochope",
+              `03`="Illimo",
+              `04`="Jayanca",
+              `05`="Mochumi",
+              `06`="Morrope",
+              `07`="Motupe",
+              `08`="Olmos",
+              `09`="Pacora",
+              `10`="Salas",
+              `11`="San_Jose",
+              `12`="Tucume")
+
+cap1200_provin <- cap1200_depart %>%
+  filter(PROVINCIA %in% "Lambayeque") %>%
+  mutate(DISTRITO = CCDI) %>%
+  mutate(DISTRITO = recode_factor(DISTRITO,!!!distrito))
+
+```
+
+```{r echo=FALSE, out.width = "70%", message = FALSE, warning = FALSE}
+table(cap1200_provin$DISTRITO, useNA = "alw")
+```
+
+
+```{r echo=FALSE, out.width = "70%", message = FALSE, warning = FALSE}
+cap1200_provin %>% 
+  count(CODIGO) %>%
+  mutate(Porcentaje = round(n/sum(n)*100,1)) %>% 
+  print(n = Inf)
+```
+
+
+---
+
+# DATOS DE LA UNIDAD AGRÍCOLA
+.font105[A nivel del **distrito de Lambayeque** (ENA, 2019).]
+
+```{r, include=FALSE}
+ena_lambayeque <- cap1200_provin %>%
+  filter(DISTRITO %in% "Lambayeque")
+
+```
+
+
+
+```{r echo=FALSE, out.width = "60%", message = FALSE, warning = FALSE}
+ena_lambayeque %>% 
+  count(CODIGO) %>%
+  mutate(Porcentaje = round(n/sum(n)*100,1)) %>% 
+  print(n = Inf)
+
+```
+
+
+```{r, include=FALSE}
+ena_pequelamba <- ena_lambayeque %>%
+  filter(CODIGO %in% "1")
+
+```
+
+
+####Solo se consideraron los pequeños y medianos productores/as agropecuarios/as del distrito de Lambayeque: 68 unidades agropecuarias.
+
+
+---
+
+# DATOS DE LA UNIDAD AGRÍCOLA
+.font105[A nivel del **distrito de Lambayeque** (ENA, 2019).]
+
+
+```{r, out.width = "70%", echo = FALSE}
+knitr::include_graphics("Grafico0.jpg", dpi = 600)
+```
+
+
+---
+
+class: inverse, center, middle
+# .font150[Datos de pequeños y medianos productores agrícolas del distrito de Lambayeque]
+
+
+
+---
+### CULTIVOS COSECHADOS
+.font105[Durante los últimos 12 meses (ENA, 2019).] 
+
+
+```{r, out.width = "70%", echo = FALSE}
+knitr::include_graphics("Grafico1.jpg", dpi = 650)
+```
+
+---
+### GRUPOS DE CULTIVOS COSECHADOS
+.font105[Durante los últimos 12 meses (ENA, 2019).] 
+
+
+```{r, out.width = "70%", echo = FALSE}
+knitr::include_graphics("Grafico1.2.jpg", dpi = 650)
+```
+
+---
+
+### TIPOS DE CULTIVOS COSECHADOS
+
+```{r, out.width = "90%", echo = FALSE}
+knitr::include_graphics("Grafico2.jpg", dpi = 600)
+```
+
+
+---
+
+### CONDUCCIÓN DEL CULTIVO
+
+
+```{r, out.width = "90%", echo = FALSE}
+knitr::include_graphics("Grafico3.jpg", dpi = 600)
+```
+
+
+
+
+---
+
+###CRITERIOS DE ORIENTACIÓN DE SIEMBRAS
+
+.panelset[
+.panel[.panel-name[P211_1]
+
+P211_1: Clima de la zona
+
+```{r, out.width = "75%", echo = FALSE}
+knitr::include_graphics("Grafico3a.jpg", dpi = 600)
+```
+
+]
+.panel[.panel-name[P211_2]
+
+P211_2: La disponibilidad del agua
+
+```{r, out.width = "75%", echo = FALSE}
+knitr::include_graphics("Grafico3b.jpg", dpi = 600)
+```
+
+]
+
+.panel[.panel-name[P211_3]
+
+P211_3: La profundidad del suelo
+
+```{r, out.width = "75%", echo = FALSE}
+knitr::include_graphics("Grafico3c.jpg", dpi = 600)
+```
+
+]
+.panel[.panel-name[P211_4]
+
+P211_4: El tipo de suelo
+
+```{r, out.width = "75%", echo = FALSE}
+knitr::include_graphics("Grafico3d.jpg", dpi = 600)
+```
+
+]
+.panel[.panel-name[P211_5]
+
+P211_5: La inclinación de la parcela/ chacra
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico3e.jpg", dpi = 600)
+```
+
+]
+]
+
+
+---
+
+### PROCEDENCIA DEL AGUA PARA EL RIEGO
+
+
+```{r, out.width = "80%", echo = FALSE}
+knitr::include_graphics("Grafico4.jpg", dpi = 600)
+```
+
+
+
+
+---
+### SISTEMA DE RIEGO UTILIZADO
+
+
+
+```{r, out.width = "70%", echo = FALSE}
+knitr::include_graphics("Grafico5.jpg", dpi = 600)
+```
+
+
+
+---
+### UTILIZÓ SEMILLA CERTIFICADA
+
+
+
+```{r, out.width = "70%", echo = FALSE}
+knitr::include_graphics("Grafico6.jpg", dpi = 600)
+```
+
+
+
+
+---
+
+###USO DE ABONOS, FERTILIZANTES Y PLAGUICIDAS
+
+.panelset[
+.panel[.panel-name[Abonos]
+
+P236: Abono
+
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico7.jpg", dpi = 600)
+```
+
+]
+
+.panel[.panel-name[Fertilizantes]
+
+P238: Fertilizantes
+
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico8.jpg", dpi = 600)
+```
+
+]
+
+.panel[.panel-name[Plaguicidas]
+
+P240: Plaguicidas
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico9.jpg", dpi = 600)
+```
+
+
+]
+]
+
+
+---
+
+###PROCEDENCIA DE LAS SEMILLAS PARA LA SIEMBRA
+
+
+.panelset[
+.panel[.panel-name[P_1]
+
+P235A_1: Propias
+
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico10.jpg", dpi = 600)
+```
+
+]
+
+.panel[.panel-name[P_2]
+
+P235A_2: Intercambio con otros productores
+
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico11.jpg", dpi = 600)
+```
+
+]
+
+.panel[.panel-name[P_3]
+
+P235A_3: Compradas a otros productores
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico12.jpg", dpi = 600)
+```
+
+]
+
+
+.panel[.panel-name[P_4]
+
+P235A_4: Compradas a semilleros
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico13.jpg", dpi = 600)
+```
+
+]
+
+
+.panel[.panel-name[P_5]
+
+P235A_5: Compradas a viveros
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico14.jpg", dpi = 600)
+```
+
+]
+
+.panel[.panel-name[P_6]
+
+P235A_6: Regaladas
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico15.jpg", dpi = 600)
+```
+
+]
+
+
+.panel[.panel-name[P_7]
+
+P235A_7: Donadas por instituciones
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico16.jpg", dpi = 600)
+```
+
+]
+
+
+.panel[.panel-name[P_8]
+
+P235A_8: Como parte del pago
+
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico17.jpg", dpi = 600)
+```
+
+]
+
+.panel[.panel-name[P_9]
+
+P235A_9: Compradas en establecimientos comerciales
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico18.jpg", dpi = 600)
+```
+
+]
+
+.panel[.panel-name[P_10]
+
+P235A_10: Otro
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico19.jpg", dpi = 600)
+```
+
+]
+]
+
+
+
+---
+
+###CAPACITACIÓN Y ASISTENCIA TÉCNICA
+
+
+.panelset[
+.panel[.panel-name[Capacitación]
+
+P701: Pequeños y medianos productores que recibieron capacitación en los últimos 3 años
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico20.jpg", dpi = 600)
+```
+
+]
+
+.panel[.panel-name[Asistencia técnica]
+
+P704: Pequeños y medianos productores que recibieron asistencia técnica en los últimos 3 años
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico21.jpg", dpi = 600)
+```
+
+]
+]
+
+
+---
+
+###UTILIZÓ INFORMACIÓN AGROPECUARIA
+
+
+.panelset[
+.panel[.panel-name[P707_1]
+
+P707_1: Precio de venta.
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico22.jpg", dpi = 600)
+```
+
+
+]
+
+.panel[.panel-name[P707_2]
+
+P707_2: Cantidad producida.
+
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico23.jpg", dpi = 600)
+```
+
+]
+
+.panel[.panel-name[P707_3]
+
+P707_3: Demanda de productos agropecuarios.
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico24.jpg", dpi = 600)
+```
+
+]
+
+
+.panel[.panel-name[P707_4]
+
+P707_4: Cantidad comercializada.
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico25.jpg", dpi = 600)
+```
+
+]
+
+
+.panel[.panel-name[P707_5]
+
+P707_5: Información agroclimática.
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico26.jpg", dpi = 600)
+```
+
+]
+
+.panel[.panel-name[P707_6]
+
+P707_6: Precio de insumos agropecuarios.
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico27.jpg", dpi = 600)
+```
+
+]
+
+
+.panel[.panel-name[P707_7]
+
+P707_7: Técnica de manejo de cultivo y crianza.
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico28.jpg", dpi = 600)
+```
+
+]
+
+
+.panel[.panel-name[P707_8]
+
+P707_8: Otro.
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico29.jpg", dpi = 600)
+```
+
+]
+]
+
+
+---
+### RECIBIÓ INFORMACIÓN SOBRE LA PREVENCIÓN DE DAÑOS CAUSADO POR EVENTOS CLIMÁTICOS
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico30.jpg", dpi = 600)
+```
+
+
+---
+### SOLICITÓ CRÉDITO
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico31.jpg", dpi = 600)
+```
+
+
+---
+### OBTUVO EL CRÉDITO SOLICITADO
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico32.jpg", dpi = 600)
+```
+
+
+---
+###CRÉDITO OBTENIDO POR
+
+.panelset[
+.panel[.panel-name[P_1]
+
+P903_1: AGROBANCO
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico33.jpg", dpi = 600)
+```
+
+]
+
+.panel[.panel-name[P_2]
+
+P903_2: Caja Municipal
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico34.jpg", dpi = 600)
+```
+
+]
+
+.panel[.panel-name[P_3]
+
+P903_3: Caja Rural
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico35.jpg", dpi = 600)
+```
+
+]
+
+
+.panel[.panel-name[P_4]
+
+P903_4: Banca Privada
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico36.jpg", dpi = 600)
+```
+
+]
+
+
+.panel[.panel-name[P_5]
+
+P903_5: Financiera/EDPYME
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico37.jpg", dpi = 600)
+```
+
+]
+
+.panel[.panel-name[P_6]
+
+P903_6: ONG
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico38.jpg", dpi = 600)
+```
+
+]
+
+
+.panel[.panel-name[P_7]
+
+P903_7: Cooperativa
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico39.jpg", dpi = 600)
+```
+
+]
+
+
+.panel[.panel-name[P_8]
+
+P903_8: Establecimiento Comercial
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico40.jpg", dpi = 600)
+```
+
+]
+
+
+.panel[.panel-name[P_9]
+
+P903_9: Prestamista/Habilitador
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico41.jpg", dpi = 600)
+```
+
+]
+
+
+.panel[.panel-name[P_10]
+
+P903_10: Programas del Estado
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico42.jpg", dpi = 600)
+```
+
+]
+
+
+.panel[.panel-name[P_11]
+
+P903_11: Otro
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico43.jpg", dpi = 600)
+```
+
+]
+]
+
+O
+---
+### BENEFICIARIO DE ALGÚN SEGURO AGROPECUARIO
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico44.jpg", dpi = 600)
+```
+
+
+
+---
+### TIENEN UNA CUENTA DE AHORRO
+
+```{r, out.width = "65%", echo = FALSE}
+knitr::include_graphics("Grafico45.jpg", dpi = 600)
+```
+
+
+
+
+---
+
+
+class: inverse, center, middle
+# .font150[Matriz insumo-Producto según las actividades productivas a nivel nacional (INEI, 2007)]
+
+
+```{r, include=FALSE}
+library(DT)
+```
+
+
+---
+
+## .font100[MIP nacional (INEI, 2007)]
+
+.panelset[
+
+.panel[.panel-name[Descripción]
+
+.font105[.line-space1-3[
+
+
+
+
+Se utilizó la Matriz de Insumo Producto (MIP) elaborada por el INEI en el 2007 y publicado en su página web [INEI, 2007](https://m.inei.gob.pe/estadisticas/indice-tematico/matriz-insumo-producto-13673/). Se analizó la MIP del año 2007 debido a que es considerado el año base comparativo. El objetivo de este análisis fue describir la interdependencia entre las actividades productivas a través de multiplicadores de producción y encadenamientos hacia adelante y hacia atrás. 
+
+La MIP considera 101 actividades productivas (desagregación de nivel 2). La unidad de la información está en millones de nuevos soles a precios básicos.
+
+]]
+
+]
+
+.panel[.panel-name[101 Actividades Productivas]
+
+```{r, out.width = "70%", echo = FALSE, message=FALSE}
+data <- read.csv("tbl_indPER.csv", sep=";", header=TRUE, dec=".")
+DT::datatable(data, options = list(pageLength = 5))
+```
+
+]
+
+
+.panel[.panel-name[Matriz]
+
+
+```{r, out.width = "100%", echo = FALSE}
+knitr::include_graphics("Matriz01.jpg", dpi = 600)
+```
+
+]
+
+.panel[.panel-name[Ejercicio]
+
+.font105[.line-space1-3[
+
+####Si la demanda de los productos agrícolas crece 1%, ¿Cuánto crece el producto bruto de cada actividad productiva y total?
+
+El producto bruto total de las actividades productivas crecen 31.2% (ver última fila) y en cada actividad productiva (ver la columna Var en %).
+
+```{r, out.width = "70%", echo = FALSE, message=FALSE}
+data <- read.csv("res_ej_1.csv", sep=",", row.names = 1, header=TRUE, dec=".")
+DT::datatable(data, options = list(pageLength = 4))
+```
+
+]]
+
+]
+]
+
+---
+
+## .font100[Multiplicadores de producción]
+
+.panelset[
+.panel[.panel-name[Descripción]
+
+.font105[.line-space1-3[
+
+La producción de un bien final en una actividad productiva demanda la participación de múltiples actividades productivas de la economía.
+
+Esto se conoce como “multiplicador”: “el valor total de producción en todos los sectores de la economía que es necesario producir para satisfacer una unidad de demanda final del sector 𝑗”. 
+
+]]
+
+]
+.panel[.panel-name[Resultados]
+
+```{r, out.width = "70%", echo = FALSE, message=FALSE}
+data <- read.csv("res_mult_prod .csv", sep=",", row.names = 1, header=TRUE, dec=".")
+DT::datatable(data, options = list(pageLength = 5))
+```
+
+]
+
+.panel[.panel-name[Interpretación]
+
+.font105[.line-space1-3[
+
+####Prod. Agrícolas: 1.38260114444334
+Para producir un millón de demanda final de la actividad “Productos agrícolas”, se requieren 1.4 millones como valor total de la producción de todas las actividades de la economía.
+
+
+Se observa que cuando mayor es el multiplicador de una actividad, mayor será el valor bruto de producción requerido para satisfacerlo.
+
+]]
+
+]
+]
+
+
+---
+
+## .font100[Indicadores de encadenamiento hacia atrás (BL) y hacia adelante (FL)]
+
+
+.panelset[
+.panel[.panel-name[Descripción]
+
+
+.pull-left[
+
+- Los indicadores de encadenamientos hacia atrás (Backward linkages - BL) y hacia adelante (Forkward linkages - FL) permiten identificar el poder de dispersión y sensibilidad de dispersión respectivamente.
+
+- BL compara la capacidad que tiene una actividad productiva para estimular al resto de actividades de una economía, con el promedio de los requerimientos del conjunto de actividades. Una actividad tendrá mayor capacidad, y su BL será mayor, cuando más insumos requiera directa e indirectamente para producir.
+
+
+]
+
+.pull-right[
+- FL mide cómo una actividad productiva transfiere sus productos a las demás actividades, que necesitan incorporarlos como insumos intermedios para sus procesos productivos. Una actividad que tiene mayor FL, tiene mayor potencial como proveedor de insumos.
+
+- A partir de estos dos indicadores se clasifican las actividades productivas como independientes, impulsado, impulsor y claves.
+
+```{r, out.width = "100%", echo = FALSE}
+knitr::include_graphics("clasificacion.jpg", dpi = 600)
+```
+
+]]
+
+
+.panel[.panel-name[Resultados]
+
+```{r, out.width = "70%", echo = FALSE, message=FALSE}
+data <- read.csv("BL_FL.csv", sep=",", row.names = 1, header=TRUE, dec=".")
+DT::datatable(data, options = list(pageLength = 4))
+```
+
+]
+
+.panel[.panel-name[Tabla de Clasificación]
+
+.pull-left[
+
+```{r, out.width = "90%", echo = FALSE}
+knitr::include_graphics("sectores.png", dpi = 600)
+```
+
+]
+
+.pull-right[
+
+- Tabla de cuatro clases de actividades. Los dos cuadros inferiores hacen referencia a la clase independiente (izquierda) e impulsoras (derecha). En la parte superior, las clases impulsadas (izquierda) y  dependientes o clave (derecha).
+
+]
+]
+
+
+.panel[.panel-name[Interpretación]
+
+
+.pull-left[
+
+- La mayoría de las actividades productivas fueron independientes e impulsoras (los dos cuadros inferiores de la tabla).
+
+- La actividad **Productos agrícolas** es independiente. En comparación a las otras actividades, esta requiere menos insumos para producir (BL < 1) y se aproxima al promedio en cuanto a la transferencia de sus productos a otras actividades productivas que lo requieran como insumo intermedio.
+
+]
+
+.pull-right[
+
+
+```{r, out.width = "100%", echo = FALSE}
+knitr::include_graphics("sectores1.png", dpi = 600)
+```
+
+]]
+]
+
+
+
+
+---
+
+## .font100[Gráfico de encadenamiento]
+
+.panelset[
+.panel[.panel-name[Gráfico]
+
+
+.pull-left[
+
+
+```{r, out.width = "100%", echo = FALSE}
+knitr::include_graphics("ActividadesProductivas.png", dpi = 600)
+```
+
+]
+
+.pull-right[
+
+- El color naranja indica que son **actividades clave**.
+
+]
+]
+
+
+
+.panel[.panel-name[Interpretación del gráfico]
+
+.font105[.line-space1-3[
+
+
+.pull-left[
+El gráfico de encadenamiento muestra las relaciones productivas entre las actividades. La actividad Productos agrícolas se relaciona con una **actividad clave "servicios agricolas y ganaderos"** y otras actividades productivas: 
+
+1. Almidones y productos de almidon.
+2. conservas de fruta.
+3. otros productos alimenticios.
+4. Animales vivos y productos pecuarios.
+5. productos de molineria, fideos y otras pastas.
+6. Alimentos preparados para animales.
+7. Azucar.
+8. Cacao, chocolate y confitería
+9. Vino, otras bebidas alcoholicas y tabaco.
+]
+
+.pull-right[
+```{r, out.width = "100%", echo = FALSE}
+knitr::include_graphics("ActividadesProductivas1.png", dpi = 600)
+```
+
+]
+
+
+
+]]
+
+]
+]
+
+
+
+---
+
+
+class: inverse, center, middle
+# .font150[Matriz insumo-Producto según los cultivos del distrito de Lambayeque]
+
+
+---
+
+##Matriz Insumo - Producto
+
+.panelset[
+.panel[.panel-name[Descripción]
+
+.font105[.line-space1-3[
+Se utilizó la base de datos secundaria de la Encuesta Nacional Agropecuaria (ENA) del año 2019 disponible en la página web del INEI. Solo se consideró la producción de las unidades agropecuarias medianas y pequeñas del distrito de Lambayeque. Para la construcción de la matriz insumo-producto, la base de datos no dispone de información sobre el consumo intermedio, por lo tanto, se considero valores **0** entre los productos agrícolas. Por otro lado, se consideraron como insumos los valores monetarios en soles de los ítems de costos de producción por cultivo del módulo 1536: Costo de semilla por cultivo (ítem `P235_VAL`), Costo de abono por cultivo (ítem `P237_VAL`), Costo de fertilizantes por cultivo (ítem `P239`) y Costo de plaguicidas por cultivo (`P220_2_VAL`). Se agruparon los costos por cultivo y fueron colocados en la parte inferior de matriz. Por otro lado, se consideró como producción los valores monetarios en soles de los ítems de valor obtenido por producción de cultivo del módulo 1530: Venta por cultivo (ítem `P220_1_VAL`) y Consumo del hogar por cultivo (ítem `P220_2_VAL`). Se agruparon los ingresos por cultivo y fueron colocados en la parte lateral derecha de la matriz. El arroz cascara fue el cultivo que generó mayores ingresos económicos del distrito de Lambayeque.  Los cuadros de verde presentan la suma total de los gastos e ingresos económicos de los cultivos cosechados. Se observa superávit en la diferencia entre los ingresos y gastos totales.
+]]
+
+]
+.panel[.panel-name[Matriz]
+
+
+```{r, out.width = "100%", echo = FALSE}
+knitr::include_graphics("Matriz.jpg", dpi = 600)
+```
+
+]
+]
+
+
+
+
+---
+class: middle
+
+<br>
+<center>
+<h1>
+<span style="color:black">¡Gracias por su atención!</span>
+<h1>
+</center>
+<br>
+
+.line-space1-5[
+Estas diapositivas fueron creadas mediante los paquetes [xaringan](https://github.com/yihui/xaringan),  [xaringanthemer](https://github.com/gadenbuie/xaringanthemer/) y
+[xaringanExtra](https://github.com/gadenbuie/xaringanExtra).
+]
